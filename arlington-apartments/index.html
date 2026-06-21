@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arlington Metro Apartments · Easy Commute to DC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>🚇 Arlington Metro Apartments</h1>
+    <p class="subtitle">Apartments in Arlington, VA near Metro — for an easy commute into Washington, DC</p>
+  </header>
+
+  <main class="container">
+    <section class="filters" aria-label="Filters">
+      <div class="field">
+        <label for="keyword">Search</label>
+        <input id="keyword" type="search" placeholder="Name or neighborhood…" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="line">Metro line</label>
+        <select id="line">
+          <option value="">Any line</option>
+          <option value="Orange">Orange</option>
+          <option value="Silver">Silver</option>
+          <option value="Blue">Blue</option>
+          <option value="Yellow">Yellow</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="corridor">Corridor</label>
+        <select id="corridor">
+          <option value="">Any corridor</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="maxWalk">Max walk to Metro: <span id="maxWalkValue">Any</span></label>
+        <input id="maxWalk" type="range" min="0" max="10" step="1" value="0" />
+      </div>
+
+      <div class="field">
+        <label for="maxRent">Max rent: <span id="maxRentValue">Any</span></label>
+        <input id="maxRent" type="range" min="0" max="5000" step="100" value="0" />
+      </div>
+
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="commute">Total commute to DC</option>
+          <option value="walk">Walk to Metro</option>
+          <option value="rentLow">Rent: low to high</option>
+          <option value="rentHigh">Rent: high to low</option>
+        </select>
+      </div>
+
+      <button id="resetBtn" type="button" class="reset-btn">Reset</button>
+    </section>
+
+    <p id="resultCount" class="result-count" role="status"></p>
+
+    <section id="results" class="results" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Sample data for demonstration only — not live listings. Ride and walk times are approximate.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
