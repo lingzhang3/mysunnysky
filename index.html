@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>公屋查詢 · Public Housing Search</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>🏠 公屋查詢</h1>
+    <p class="subtitle">輸入條件，快速查詢公共／公營房屋屋邨資料</p>
+  </header>
+
+  <main class="container">
+    <section class="filters" aria-label="搜尋條件">
+      <div class="field">
+        <label for="keyword">關鍵字（屋邨名稱）</label>
+        <input id="keyword" type="search" placeholder="例如：彩虹、華富、愛民" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="region">地區</label>
+        <select id="region">
+          <option value="">全部地區</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="flatType">戶型</label>
+        <select id="flatType">
+          <option value="">全部戶型</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="maxRent">最高月租（HK$）：<span id="maxRentValue">不限</span></label>
+        <input id="maxRent" type="range" min="0" max="5000" step="100" value="0" />
+      </div>
+
+      <button id="resetBtn" type="button" class="reset-btn">重設條件</button>
+    </section>
+
+    <p id="resultCount" class="result-count" role="status"></p>
+
+    <section id="results" class="results" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>資料僅供示範用途，並非官方數據。</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
