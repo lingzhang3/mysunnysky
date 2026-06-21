@@ -106,17 +106,19 @@
           <h2 class="card-title">${a.name}</h2>
           <div class="lines">${linePills(a.lines)}</div>
         </div>
-        <p class="card-loc">${a.neighborhood} · ${a.corridor}</p>
+        <p class="card-loc">${a.address}</p>
+        <p class="card-sub">${a.neighborhood} · ${a.corridor}</p>
         <dl class="card-meta">
           <div><dt>Nearest Metro</dt><dd>${a.station}</dd></div>
-          <div><dt>Walk to Metro</dt><dd>${a.walkMin} min</dd></div>
-          <div><dt>Ride to DC</dt><dd>${a.rideMinToDC} min</dd></div>
+          <div><dt>Walk to Metro</dt><dd>~${a.walkMin} min</dd></div>
+          <div><dt>Ride to DC</dt><dd>~${a.rideMinToDC} min</dd></div>
           <div class="highlight"><dt>Total to DC</dt><dd>~${totalCommute(a)} min</dd></div>
-          <div><dt>Rent</dt><dd>$${a.rentFrom.toLocaleString()} – ${a.rentTo.toLocaleString()}/mo</dd></div>
+          <div><dt>Starting rent</dt><dd>From $${a.rentFrom.toLocaleString()}/mo</dd></div>
         </dl>
         <div class="tags">
           ${a.beds.map((b) => `<span class="tag">${b}</span>`).join("")}
         </div>
+        <a class="card-link" href="${a.source}" target="_blank" rel="noopener">View listing ↗</a>
       `;
       resultsEl.appendChild(card);
     }
@@ -141,6 +143,10 @@
   }
 
   function init() {
+    const note = document.getElementById("dataNote");
+    if (note && typeof RENT_AS_OF !== "undefined") {
+      note.textContent = `Real Arlington apartment communities near Metro. Starting rents gathered from public listings as of ${RENT_AS_OF}.`;
+    }
     populateFilters();
     [keywordInput, maxWalkInput, maxRentInput].forEach((el) =>
       el.addEventListener("input", update)

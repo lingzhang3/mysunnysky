@@ -47,12 +47,29 @@ python3 -m http.server 8000
 
 ## Data
 
-`data.js` contains **sample/demo data** — it is **not** a live listings feed.
-Walk times, ride times, and rents are approximate. To make it production-ready,
-replace the `APARTMENTS` array with a real source (an apartments listing API, a
-scraped feed, or your own backend) while keeping the same fields:
+`data.js` lists **real Arlington apartment communities** near Metro. Building
+names, addresses, nearest stations, and **starting rents** were gathered from
+public listings (Apartments.com, RentCafe, and official property sites) in
+**June 2026**. Each card links to its source via **“View listing.”**
+
+Caveats:
+
+- **Rents change frequently** and vary by unit, floor, lease term, and current
+  specials. The `rentFrom` value is the lowest advertised starting rent at the
+  time of collection — confirm current pricing with the property.
+- `walkMin` and `rideMinToDC` are **approximate**. Ride times are to downtown DC
+  (Metro Center for Orange/Silver/Blue; L'Enfant Plaza for Yellow).
+
+Each record uses these fields:
 
 ```
-name, station, lines[], corridor, neighborhood,
-walkMin, rideMinToDC, rentFrom, rentTo, beds[]
+name, address, station, lines[], corridor, neighborhood,
+walkMin, rideMinToDC, rentFrom, beds[], source
 ```
+
+### Keeping it current
+
+Listing sites block automated scraping, so there is no live feed here. To
+refresh, update `rentFrom` per building from the linked sources and bump
+`RENT_AS_OF` at the top of `data.js`. For a fully automated feed you'd need a
+paid listings API (e.g. a rentals data provider) or your own backend.

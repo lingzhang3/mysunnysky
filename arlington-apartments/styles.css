@@ -155,9 +155,28 @@ body {
 }
 
 .card-loc {
-  margin: 0.2rem 0 0.8rem;
+  margin: 0.3rem 0 0.1rem;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.card-sub {
+  margin: 0 0 0.8rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
 }
 
 .card-meta {
